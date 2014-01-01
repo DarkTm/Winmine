@@ -18,6 +18,11 @@
 		E203B68D187479210066A5BB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E203B68C187479210066A5BB /* Default-568h@2x.png */; };
 		E203B690187479210066A5BB /* WYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E203B68F187479210066A5BB /* WYViewController.m */; };
 		E203B693187479210066A5BB /* WYViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E203B691187479210066A5BB /* WYViewController.xib */; };
+		E203B69E187488590066A5BB /* WYBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E203B69D187488590066A5BB /* WYBaseController.m */; };
+		E203B6A1187488720066A5BB /* WYWinmineController.m in Sources */ = {isa = PBXBuildFile; fileRef = E203B6A0187488720066A5BB /* WYWinmineController.m */; };
+		E203B6A4187491430066A5BB /* WYWinmineMap.m in Sources */ = {isa = PBXBuildFile; fileRef = E203B6A3187491430066A5BB /* WYWinmineMap.m */; };
+		E203B6A7187491570066A5BB /* WYWinmineBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = E203B6A6187491570066A5BB /* WYWinmineBtn.m */; };
+		E203B6AA187493AB0066A5BB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E203B6A9187493AB0066A5BB /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,16 @@
 		E203B68E187479210066A5BB /* WYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYViewController.h; sourceTree = "<group>"; };
 		E203B68F187479210066A5BB /* WYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYViewController.m; sourceTree = "<group>"; };
 		E203B692187479210066A5BB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/WYViewController.xib; sourceTree = "<group>"; };
+		E203B69C187488590066A5BB /* WYBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYBaseController.h; sourceTree = "<group>"; };
+		E203B69D187488590066A5BB /* WYBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYBaseController.m; sourceTree = "<group>"; };
+		E203B69F187488720066A5BB /* WYWinmineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYWinmineController.h; sourceTree = "<group>"; };
+		E203B6A0187488720066A5BB /* WYWinmineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWinmineController.m; sourceTree = "<group>"; };
+		E203B6A2187491430066A5BB /* WYWinmineMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYWinmineMap.h; sourceTree = "<group>"; };
+		E203B6A3187491430066A5BB /* WYWinmineMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWinmineMap.m; sourceTree = "<group>"; };
+		E203B6A5187491570066A5BB /* WYWinmineBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYWinmineBtn.h; sourceTree = "<group>"; };
+		E203B6A6187491570066A5BB /* WYWinmineBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWinmineBtn.m; sourceTree = "<group>"; };
+		E203B6A8187493740066A5BB /* Configure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configure.h; sourceTree = "<group>"; };
+		E203B6A9187493AB0066A5BB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E203B6AA187493AB0066A5BB /* QuartzCore.framework in Frameworks */,
 				E203B677187479210066A5BB /* UIKit.framework in Frameworks */,
 				E203B679187479210066A5BB /* Foundation.framework in Frameworks */,
 				E203B67B187479210066A5BB /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +89,7 @@
 		E203B675187479210066A5BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E203B6A9187493AB0066A5BB /* QuartzCore.framework */,
 				E203B676187479210066A5BB /* UIKit.framework */,
 				E203B678187479210066A5BB /* Foundation.framework */,
 				E203B67A187479210066A5BB /* CoreGraphics.framework */,
@@ -83,6 +100,14 @@
 		E203B67C187479210066A5BB /* Winmine */ = {
 			isa = PBXGroup;
 			children = (
+				E203B69C187488590066A5BB /* WYBaseController.h */,
+				E203B69D187488590066A5BB /* WYBaseController.m */,
+				E203B69F187488720066A5BB /* WYWinmineController.h */,
+				E203B6A0187488720066A5BB /* WYWinmineController.m */,
+				E203B6A2187491430066A5BB /* WYWinmineMap.h */,
+				E203B6A3187491430066A5BB /* WYWinmineMap.m */,
+				E203B6A5187491570066A5BB /* WYWinmineBtn.h */,
+				E203B6A6187491570066A5BB /* WYWinmineBtn.m */,
 				E203B685187479210066A5BB /* WYAppDelegate.h */,
 				E203B686187479210066A5BB /* WYAppDelegate.m */,
 				E203B68E187479210066A5BB /* WYViewController.h */,
@@ -96,6 +121,7 @@
 		E203B67D187479210066A5BB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E203B6A8187493740066A5BB /* Configure.h */,
 				E203B67E187479210066A5BB /* Winmine-Info.plist */,
 				E203B67F187479210066A5BB /* InfoPlist.strings */,
 				E203B682187479210066A5BB /* main.m */,
@@ -177,6 +203,10 @@
 				E203B683187479210066A5BB /* main.m in Sources */,
 				E203B687187479210066A5BB /* WYAppDelegate.m in Sources */,
 				E203B690187479210066A5BB /* WYViewController.m in Sources */,
+				E203B69E187488590066A5BB /* WYBaseController.m in Sources */,
+				E203B6A1187488720066A5BB /* WYWinmineController.m in Sources */,
+				E203B6A4187491430066A5BB /* WYWinmineMap.m in Sources */,
+				E203B6A7187491570066A5BB /* WYWinmineBtn.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +294,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Winmine/Winmine-Prefix.pch";
 				INFOPLIST_FILE = "Winmine/Winmine-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -275,6 +306,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Winmine/Winmine-Prefix.pch";
 				INFOPLIST_FILE = "Winmine/Winmine-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

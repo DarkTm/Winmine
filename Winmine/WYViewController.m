@@ -8,6 +8,8 @@
 
 #import "WYViewController.h"
 
+#import "WYWinmineController.h"
+
 @interface WYViewController ()
 
 @end
@@ -18,6 +20,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+        
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+
+    WYWinmineController *winmine = [[WYWinmineController alloc] init];
+
+    [self presentViewController:winmine animated:YES completion:NULL];
 }
 
 - (void)didReceiveMemoryWarning

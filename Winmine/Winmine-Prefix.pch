@@ -8,7 +8,13 @@
 #warning "This project uses features only available in iOS SDK 4.0 and later."
 #endif
 
+#define DLog(Tm, ...) {printf(("\n%s [Line %d] " Tm), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);}
+
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <QuartzCore/QuartzCore.h>
+
+
+    #import "Configure.h"
 #endif
