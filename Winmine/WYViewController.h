@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WYViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UILabel *num;
+@property (strong, nonatomic) IBOutlet UISlider *slider;
 
 @end

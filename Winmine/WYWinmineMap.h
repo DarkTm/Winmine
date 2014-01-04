@@ -14,4 +14,6 @@
 
 //-(void)initDta:(int)aWide height:(int)aHeight;
 
+@property(assign) int isEnd;
+
 @end

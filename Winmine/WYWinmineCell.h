@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WYWinmineBtn : UIView
+@interface WYWinmineCell : UIView
 
--(WYWinmineBtn *)initWithFrame:(CGRect)frame withValue:(struct WinminValues)aValue;
+-(WYWinmineCell *)initWithFrame:(CGRect)frame withValue:(struct WinminValues)aValue;
 
 -(void)setStateWithValues:(struct WinminValues)sValue;
 //-(void)setStateWithState:(WinmineState)aState;

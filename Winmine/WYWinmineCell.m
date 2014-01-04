@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 tom. All rights reserved.
 //
 
-#import "WYWinmineBtn.h"
+#import "WYWinmineCell.h"
 
-@interface WYWinmineBtn()
+@interface WYWinmineCell()
 {
     struct WinminValues _value;
 }
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation WYWinmineBtn
+@implementation WYWinmineCell
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -40,11 +40,11 @@
 }
 
 #pragma mark - Property Method -
--(WYWinmineBtn *)initWithFrame:(CGRect)frame withValue:(struct WinminValues)aValue{
+-(WYWinmineCell *)initWithFrame:(CGRect)frame withValue:(struct WinminValues)aValue{
 
     self = [super initWithFrame:frame];
 
-    [self setBackgroundColor:[UIColor whiteColor]];
+    [self setBackgroundColor:[UIColor colorWithRed:1.0 green:151.0/255 blue:0 alpha:1.0]];
     
     _value = aValue;
     
@@ -117,36 +117,49 @@
 
     switch (aValue.state) {
         case WinmineNormal:
-            name = @"Normal";
+            name = @"normal_0.png";
             break;
         case WinmineMark:
-            name = @"Mark";
+            name = @"flag_0.png";
             break;
         case WinmineOpened:{
         
             if(aValue.openState == WinmineOpenNum){
-                name = [NSString stringWithFormat:@"%d",_value.value];
+                name = [NSString stringWithFormat:@"style_0_%d.png",_value.value];
             }else if(aValue.openState == WinmineOpenEmpty){
-                name = @"Empty";
+                name = @"empty_0.png";
             }else if(aValue.openState == WinmineOpenMine){
-                name = @"Mine";
+                if(aValue.isError){
+                    name = @"mine_0_faile.png";
+                }else{
+                    name = @"mine_0_normal.png";
+                }
             }
             break;
         }
     }
-
+    
+//    if(aValue.openState == WinmineOpenNum){
+//        name = [NSString stringWithFormat:@"%d",_value.value];
+//    }else if(aValue.openState == WinmineOpenEmpty){
+//        name = @"0";
+//    }else if(aValue.openState == WinmineOpenMine){
+//        name = @"9";
+//    }
+    
     return name;
 }
 
 
 - (void)drawRect:(CGRect)rect
 {
-
     NSString *name = [self getImageWithState:_value];
-    if(name)
-        [name drawInRect:rect withFont:[UIFont systemFontOfSize:12]];
-    else
-        [@"NULL" drawInRect:rect withFont:[UIFont systemFontOfSize:12]];
+//    DLog("%s",[name UTF8String]);
+    UIImage *image = [UIImage imageNamed:name];
+    
+    [image drawInRect:rect ];
+    
+//    [name drawInRect:rect withFont:[UIFont systemFontOfSize:12]];
 }
 
 

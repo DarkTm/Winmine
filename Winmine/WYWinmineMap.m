@@ -8,19 +8,31 @@
 
 #import "WYWinmineMap.h"
 
-#import "WYWinmineBtn.h"
+#import "WYWinmineCell.h"
 
 #define BTN_WIDE 44.0
 #define BTN_HEIGHT 44.0
+
+
+#define MAX_SIZE 256
 
 #define BTN_TAG 10000
 
 
 @interface WYWinmineMap()
-
 -(BOOL)isFinish;
+
 -(void)success;
+
 -(void)faile;
+
+-(void)emptyWithI:(int)i j:(int)j;
+
+-(void)touchNum:(int)i j:(int)j;
+
+-(void)animationWithTip:(WYWinmineCell *)cell withValue:(struct WinminValues)value;
+
+-(void)animationWith:(WYWinmineCell *)cell withValue:(struct WinminValues)value;
 @end
 
 @implementation WYWinmineMap{
@@ -30,6 +42,9 @@
     unsigned int _wide;
     unsigned int _height;
  
+    unsigned int countMine;
+    unsigned int countNum;
+    
     CGAffineTransform _transform;
 }
 
@@ -48,12 +63,10 @@
     
     self = [super initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    _transform = CGAffineTransformMakeScale(1.1, 1.1);
     
-    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(on_doubleTap:)];
-    doubleTap.numberOfTapsRequired = 2;
-    doubleTap.numberOfTouchesRequired = 1;
-    [self addGestureRecognizer:doubleTap];
+    [self setBackgroundColor:[UIColor colorWithRed:1.0 green:151.0/255 blue:0 alpha:1.0]];
+    
+    _transform = CGAffineTransformMakeScale(1.1, 1.1);
     
     return self;
 }
@@ -62,18 +75,16 @@
     
     [self initDta:_wide height:_height];
     
-    self.minimumZoomScale = 0.5;
-    self.maximumZoomScale = 2.0;
+    float sep = 0;
     
     for (int i = 0; i < _wide; i++) {
         for (int j = 0; j < _height; j++) {
             
-            WYWinmineBtn *btn = [[WYWinmineBtn alloc] initWithFrame:CGRectMake(j * (BTN_WIDE + 5), i * (BTN_HEIGHT + 5), BTN_WIDE, BTN_HEIGHT) withValue:_dataArray[i][j]];
-            btn.tag = BTN_TAG + i * _wide + j;
-            
-            btn.layer.borderWidth = 1.0f;
-            btn.layer.borderColor = [[UIColor blueColor] CGColor];
+            WYWinmineCell *btn = [[WYWinmineCell alloc] initWithFrame:CGRectMake(sep + j * (BTN_WIDE + sep), sep + i * (BTN_HEIGHT + sep), BTN_WIDE, BTN_HEIGHT) withValue:_dataArray[i][j]];
+            btn.tag = BTN_TAG + i * MAX_SIZE + j;
 
+//            btn.layer.borderWidth = 1.0f;
+//            btn.layer.borderColor = [[UIColor blueColor] CGColor];
             
             UILongPressGestureRecognizer *longGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(on_long:)];
             [btn addGestureRecognizer:longGes];
@@ -90,64 +101,196 @@
 
 #pragma mark - Private Method -
 
--(BOOL)isFinish{
-    return NO;
+-(void)touchNum:(int)i j:(int)j{
+//open 
+    
 }
+
+-(void)animationWithTip:(WYWinmineCell *)cell withValue:(struct WinminValues)value{
+//animation tip
+}
+
+-(void)animationWith:(WYWinmineCell *)cell withValue:(struct WinminValues)value{
+
+    [cell.layer removeAnimationForKey:@"transform3D"];
+    
+    [CATransaction begin ];
+    
+    [CATransaction setCompletionBlock:^{
+        [cell setStateWithValues:value];//渐显
+    }];
+    
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0, 1, 0)];
+    animation.duration = .2;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [cell.layer addAnimation:animation forKey:@"transform3D"];
+    [animation setRemovedOnCompletion:YES];
+    [CATransaction commit];
+}
+
+-(BOOL)isFinish{
+    
+    BOOL isEnd = NO;
+    
+    int mine = 0;
+    int num = 0;
+    for (int i = 0; i < _wide; i++) {
+        
+        for (int j = 0; j < _height; j++) {
+            
+            struct WinminValues value = _dataArray[i][j];
+            
+            if(value.state == WinmineOpenMine && value.state == WinmineMark)
+                mine += 1;
+            else if((value.openState == WinmineOpenEmpty || value.openState == WinmineOpenNum) && value.state == WinmineOpened){
+                num += 1;
+            }
+        }
+    }
+    
+//    printf("\n %d.%d",num,mine);
+    if(mine == countMine) isEnd = YES;
+    if(num == countNum) isEnd = YES;
+    
+    if(isEnd)
+        [self success];
+    else
+        DLog("not finish");
+    
+    return isEnd;
+}
+
 -(void)success{
     DLog("success");
+    self.isEnd = 1;
+    for (int i = 0; i < _wide; i++) {
+        for (int j = 0; j < _height; j++) {
+            
+            struct WinminValues value = _dataArray[i][j];
+            
+            if(value.state == WinmineNormal){//没有打开的就继续
+                
+                int tag = BTN_TAG + i * MAX_SIZE + j;
+                
+                value.state = WinmineOpened;
+                
+                _dataArray[i][j] = value;
+                
+                WYWinmineCell *b = (WYWinmineCell*)[self viewWithTag:tag];
+                
+                [self animationWith:b withValue:value];
+            }
+        }
+    }
+    
 }
+
 -(void)faile{
     DLog("faile");
+            self.isEnd = 1;
+    for (int i = 0; i < _wide; i++) {
+        for (int j = 0; j < _height; j++) {
+            
+            struct WinminValues value = _dataArray[i][j];
+            if(_dataArray[i][j].state == WinmineNormal){//没有打开的就继续
+
+                value.state = WinmineOpened;
+                _dataArray[i][j] = value;
+                
+                int tag = BTN_TAG + i * MAX_SIZE + j;
+                
+                WYWinmineCell *b = (WYWinmineCell*)[self viewWithTag:tag];
+                
+                [self animationWith:b withValue:value];
+            }
+        }
+    }
 }
 
 #pragma mark - Action -
 
--(void)on_doubleTap:(UIGestureRecognizer *)g{
-
-    DLog("on_doubleTap");
+-(void)emptyWithI:(int)i j:(int)j{
+    int m = i + 1;
+    int n = j + 1;
+    
+    if(m>=_wide)
+        m--;
+    if(m>=_wide)
+        m--;
+    if(m>=_wide)
+        m--;
+        
+    for(;m >= 0 && m < _wide && m > i - 2;m--){
+        n = j + 1;
+        
+        if(n>=_height)
+            n--;
+        if(n>=_height)
+            n--;
+        if(n>=_height)
+            n--;
+        
+        for(; n >= 0 && m < _height && m > j - 2; n--){
+            
+            struct WinminValues value = _dataArray[m][n];
+            if(value.openState == WinmineOpenEmpty && value.state == WinmineNormal){
+            
+                value.state = WinmineOpened;
+                _dataArray[m][n] = value;
+                
+                int tag = BTN_TAG + m * MAX_SIZE + n;
+                
+                WYWinmineCell *b = (WYWinmineCell*)[self viewWithTag:tag];
+                
+                [self animationWith:b withValue:value];
+                
+                [self emptyWithI:m j:n];
+            }
+        }
+    }
 }
 
 -(void)on_singleTap:(UIGestureRecognizer *)g{
 
     UIView *v = g.view;
-    if([v isKindOfClass:[WYWinmineBtn class]]){
+    if([v isKindOfClass:[WYWinmineCell class]]){
         
-        WYWinmineBtn *b = (WYWinmineBtn *)v;
+        WYWinmineCell *b = (WYWinmineCell *)v;
         
         unsigned int index = b.tag - BTN_TAG;
-        int i = index / _wide;
-        int j = index % _height;
+        int i = index / MAX_SIZE;
+        int j = index % MAX_SIZE;
         
         struct WinminValues value = _dataArray[i][j];
      
-        if(value.state == WinmineOpened) return;
+        if(value.state == WinmineOpened){
+            
+            
+            [self touchNum:i j:j];
+            return;
+        }
         
         value.state = WinmineOpened;
         
         _dataArray[i][j] = value;
         
-//        可以做个动画
-        
-        [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            b.alpha = 0;
-        } completion:^(BOOL finished) {
-            [b setStateWithValues:value];
-            [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-                b.alpha = 1;
-            } completion:NULL];
-        }];
-        
-        
-        
-        
+        [self animationWith:b withValue:value];
         
         if(value.openState == WinmineOpenMine){
+            
+            value.isError = YES;
+            _dataArray[i][j] = value;
+            
+            [self animationWith:b withValue:value];
+            
             [self faile];
             return;
         }
         
         if(value.openState == WinmineOpenEmpty){
             //检查周围相连接的是否未空，如果为空，直接显示出来 递归
+            [self emptyWithI:i j:j];
         }
         
         [self isFinish];
@@ -161,13 +304,13 @@
     if(g.state == UIGestureRecognizerStateBegan){
         
         UIView *v = g.view;
-        if([v isKindOfClass:[WYWinmineBtn class]]){
+        if([v isKindOfClass:[WYWinmineCell class]]){
             
-            WYWinmineBtn *b = (WYWinmineBtn *)v;
+            WYWinmineCell *b = (WYWinmineCell *)v;
             
             unsigned int index = b.tag - BTN_TAG;
-            int i = index / _wide;
-            int j = index % _height;
+            int i = index / MAX_SIZE;
+            int j = index % MAX_SIZE;
             
             struct WinminValues value = _dataArray[i][j];
             if(value.state == WinmineNormal){
@@ -179,33 +322,43 @@
                 return;
             }
             _dataArray[i][j] = value;
-//            可以做个动画
-            [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-                b.alpha = 0;
-            } completion:^(BOOL finished) {
-                [b setStateWithValues:value];
-                [UIView animateWithDuration:.2 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-                    b.alpha = 1;
-                } completion:NULL];
-            }];
+            
+            [self animationWith:b withValue:value];
             
             [self isFinish];
         }
     }
 }
 
+
 //TODO:还需要增加控制雷的数量
 -(void)initDta:(int)aWide height:(int)aHeight{
     
-    NSAssert(aWide < 255 && aHeight < 255, @"wide or height can not bigger 255!!!");
+    NSAssert(aWide < MAX_SIZE && aHeight < MAX_SIZE, @"wide or height can not bigger MAX_SIZE!!!");
     
     int array1[aWide][aHeight],array2[aWide][aHeight];
     int i,j,m,n;
     srand((unsigned)time(NULL));
+        
+    countMine = 0;
+    countNum = 0;
+    
     //对array1赋值，1代表地雷，0代表无雷
     for(i=0;i<aWide;i++){
         for(j=0;j<aHeight;j++){
-            array1[i][j]=(int)((double)rand()/(double)RAND_MAX+0.5);
+            int value = (int)((double)rand()/(double)RAND_MAX+0.5);
+            
+//            if(countMine == 10) value = 0;
+            
+            if(value == 0){
+                countNum+=1;
+            }else if(value == 1){
+                countMine+=1;
+            }
+            
+            
+            
+            array1[i][j]= value;
         }
     }
     
@@ -296,6 +449,7 @@
             }
         }
     }
+    
     //打印地雷图
     for(i=0;i<aWide;i++){
         for(j=0;j<aHeight;j++){
@@ -303,19 +457,18 @@
             _dataArray[i][j].value = array2[i][j];
             _dataArray[i][j].state = WinmineNormal;
             
-            if(_dataArray[i][i].value == 0)
-                _dataArray[i][i].openState = WinmineOpenEmpty;
-            else if(_dataArray[i][i].value == 9)
-                _dataArray[i][i].openState = WinmineOpenMine;
+            if(_dataArray[i][j].value == 0)
+                _dataArray[i][j].openState = WinmineOpenEmpty;
+            else if(_dataArray[i][j].value == 9)
+                _dataArray[i][j].openState = WinmineOpenMine;
             else
-                 _dataArray[i][i].openState = WinmineOpenNum;
-            
-//            if(j%aHeight==0 && i!=0)
-//                printf("\n");
-//            printf("%2d",array2[i][j]);
+                 _dataArray[i][j].openState = WinmineOpenNum;
+            if(j%aHeight==0 && i!=0)
+                printf("\n");
+            printf("%2d",array2[i][j]);
         }
     }
-    
+//    printf("\n %d.%d",countNum,countMine);
 }
 
 @end

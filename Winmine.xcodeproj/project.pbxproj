@@ -21,8 +21,22 @@
 		E203B69E187488590066A5BB /* WYBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = E203B69D187488590066A5BB /* WYBaseController.m */; };
 		E203B6A1187488720066A5BB /* WYWinmineController.m in Sources */ = {isa = PBXBuildFile; fileRef = E203B6A0187488720066A5BB /* WYWinmineController.m */; };
 		E203B6A4187491430066A5BB /* WYWinmineMap.m in Sources */ = {isa = PBXBuildFile; fileRef = E203B6A3187491430066A5BB /* WYWinmineMap.m */; };
-		E203B6A7187491570066A5BB /* WYWinmineBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = E203B6A6187491570066A5BB /* WYWinmineBtn.m */; };
+		E203B6A7187491570066A5BB /* WYWinmineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E203B6A6187491570066A5BB /* WYWinmineCell.m */; };
 		E203B6AA187493AB0066A5BB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E203B6A9187493AB0066A5BB /* QuartzCore.framework */; };
+		E21D4B601878C710009C902F /* style_0_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B571878C710009C902F /* style_0_1.png */; };
+		E21D4B611878C710009C902F /* style_0_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B581878C710009C902F /* style_0_2.png */; };
+		E21D4B621878C710009C902F /* style_0_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B591878C710009C902F /* style_0_3.png */; };
+		E21D4B631878C710009C902F /* style_0_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B5A1878C710009C902F /* style_0_4.png */; };
+		E21D4B641878C710009C902F /* style_0_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B5B1878C710009C902F /* style_0_5.png */; };
+		E21D4B651878C710009C902F /* style_0_6.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B5C1878C710009C902F /* style_0_6.png */; };
+		E21D4B661878C710009C902F /* style_0_7.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B5D1878C710009C902F /* style_0_7.png */; };
+		E21D4B671878C710009C902F /* style_0_8.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B5E1878C710009C902F /* style_0_8.png */; };
+		E21D4B681878C710009C902F /* style_0_9.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B5F1878C710009C902F /* style_0_9.png */; };
+		E21D4B6B1878C7FB009C902F /* mine_0_faile.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B691878C7FB009C902F /* mine_0_faile.png */; };
+		E21D4B6C1878C7FB009C902F /* mine_0_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B6A1878C7FB009C902F /* mine_0_normal.png */; };
+		E21D4B701878CB16009C902F /* empty_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B6D1878CB16009C902F /* empty_0.png */; };
+		E21D4B711878CB16009C902F /* flag_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B6E1878CB16009C902F /* flag_0.png */; };
+		E21D4B721878CB16009C902F /* normal_0.png in Resources */ = {isa = PBXBuildFile; fileRef = E21D4B6F1878CB16009C902F /* normal_0.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,10 +62,24 @@
 		E203B6A0187488720066A5BB /* WYWinmineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWinmineController.m; sourceTree = "<group>"; };
 		E203B6A2187491430066A5BB /* WYWinmineMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYWinmineMap.h; sourceTree = "<group>"; };
 		E203B6A3187491430066A5BB /* WYWinmineMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWinmineMap.m; sourceTree = "<group>"; };
-		E203B6A5187491570066A5BB /* WYWinmineBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYWinmineBtn.h; sourceTree = "<group>"; };
-		E203B6A6187491570066A5BB /* WYWinmineBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWinmineBtn.m; sourceTree = "<group>"; };
+		E203B6A5187491570066A5BB /* WYWinmineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYWinmineCell.h; sourceTree = "<group>"; };
+		E203B6A6187491570066A5BB /* WYWinmineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWinmineCell.m; sourceTree = "<group>"; };
 		E203B6A8187493740066A5BB /* Configure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configure.h; sourceTree = "<group>"; };
 		E203B6A9187493AB0066A5BB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E21D4B571878C710009C902F /* style_0_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style_0_1.png; sourceTree = "<group>"; };
+		E21D4B581878C710009C902F /* style_0_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style_0_2.png; sourceTree = "<group>"; };
+		E21D4B591878C710009C902F /* style_0_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style_0_3.png; sourceTree = "<group>"; };
+		E21D4B5A1878C710009C902F /* style_0_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style_0_4.png; sourceTree = "<group>"; };
+		E21D4B5B1878C710009C902F /* style_0_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style_0_5.png; sourceTree = "<group>"; };
+		E21D4B5C1878C710009C902F /* style_0_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style_0_6.png; sourceTree = "<group>"; };
+		E21D4B5D1878C710009C902F /* style_0_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style_0_7.png; sourceTree = "<group>"; };
+		E21D4B5E1878C710009C902F /* style_0_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style_0_8.png; sourceTree = "<group>"; };
+		E21D4B5F1878C710009C902F /* style_0_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = style_0_9.png; sourceTree = "<group>"; };
+		E21D4B691878C7FB009C902F /* mine_0_faile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_0_faile.png; sourceTree = "<group>"; };
+		E21D4B6A1878C7FB009C902F /* mine_0_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_0_normal.png; sourceTree = "<group>"; };
+		E21D4B6D1878CB16009C902F /* empty_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty_0.png; sourceTree = "<group>"; };
+		E21D4B6E1878CB16009C902F /* flag_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flag_0.png; sourceTree = "<group>"; };
+		E21D4B6F1878CB16009C902F /* normal_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal_0.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,14 +128,15 @@
 		E203B67C187479210066A5BB /* Winmine */ = {
 			isa = PBXGroup;
 			children = (
+				E21D4B551878C710009C902F /* image */,
 				E203B69C187488590066A5BB /* WYBaseController.h */,
 				E203B69D187488590066A5BB /* WYBaseController.m */,
 				E203B69F187488720066A5BB /* WYWinmineController.h */,
 				E203B6A0187488720066A5BB /* WYWinmineController.m */,
 				E203B6A2187491430066A5BB /* WYWinmineMap.h */,
 				E203B6A3187491430066A5BB /* WYWinmineMap.m */,
-				E203B6A5187491570066A5BB /* WYWinmineBtn.h */,
-				E203B6A6187491570066A5BB /* WYWinmineBtn.m */,
+				E203B6A5187491570066A5BB /* WYWinmineCell.h */,
+				E203B6A6187491570066A5BB /* WYWinmineCell.m */,
 				E203B685187479210066A5BB /* WYAppDelegate.h */,
 				E203B686187479210066A5BB /* WYAppDelegate.m */,
 				E203B68E187479210066A5BB /* WYViewController.h */,
@@ -131,6 +160,35 @@
 				E203B68C187479210066A5BB /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E21D4B551878C710009C902F /* image */ = {
+			isa = PBXGroup;
+			children = (
+				E21D4B561878C710009C902F /* num0 */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		E21D4B561878C710009C902F /* num0 */ = {
+			isa = PBXGroup;
+			children = (
+				E21D4B6D1878CB16009C902F /* empty_0.png */,
+				E21D4B6E1878CB16009C902F /* flag_0.png */,
+				E21D4B6F1878CB16009C902F /* normal_0.png */,
+				E21D4B691878C7FB009C902F /* mine_0_faile.png */,
+				E21D4B6A1878C7FB009C902F /* mine_0_normal.png */,
+				E21D4B571878C710009C902F /* style_0_1.png */,
+				E21D4B581878C710009C902F /* style_0_2.png */,
+				E21D4B591878C710009C902F /* style_0_3.png */,
+				E21D4B5A1878C710009C902F /* style_0_4.png */,
+				E21D4B5B1878C710009C902F /* style_0_5.png */,
+				E21D4B5C1878C710009C902F /* style_0_6.png */,
+				E21D4B5D1878C710009C902F /* style_0_7.png */,
+				E21D4B5E1878C710009C902F /* style_0_8.png */,
+				E21D4B5F1878C710009C902F /* style_0_9.png */,
+			);
+			path = num0;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +248,20 @@
 				E203B68B187479210066A5BB /* Default@2x.png in Resources */,
 				E203B68D187479210066A5BB /* Default-568h@2x.png in Resources */,
 				E203B693187479210066A5BB /* WYViewController.xib in Resources */,
+				E21D4B601878C710009C902F /* style_0_1.png in Resources */,
+				E21D4B611878C710009C902F /* style_0_2.png in Resources */,
+				E21D4B621878C710009C902F /* style_0_3.png in Resources */,
+				E21D4B631878C710009C902F /* style_0_4.png in Resources */,
+				E21D4B641878C710009C902F /* style_0_5.png in Resources */,
+				E21D4B651878C710009C902F /* style_0_6.png in Resources */,
+				E21D4B661878C710009C902F /* style_0_7.png in Resources */,
+				E21D4B671878C710009C902F /* style_0_8.png in Resources */,
+				E21D4B681878C710009C902F /* style_0_9.png in Resources */,
+				E21D4B6B1878C7FB009C902F /* mine_0_faile.png in Resources */,
+				E21D4B6C1878C7FB009C902F /* mine_0_normal.png in Resources */,
+				E21D4B701878CB16009C902F /* empty_0.png in Resources */,
+				E21D4B711878CB16009C902F /* flag_0.png in Resources */,
+				E21D4B721878CB16009C902F /* normal_0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +278,7 @@
 				E203B69E187488590066A5BB /* WYBaseController.m in Sources */,
 				E203B6A1187488720066A5BB /* WYWinmineController.m in Sources */,
 				E203B6A4187491430066A5BB /* WYWinmineMap.m in Sources */,
-				E203B6A7187491570066A5BB /* WYWinmineBtn.m in Sources */,
+				E203B6A7187491570066A5BB /* WYWinmineCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,11 +363,15 @@
 		E203B697187479210066A5BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: wei tang (UM3W5PN3RL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: wei tang (UM3W5PN3RL)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Winmine/Winmine-Prefix.pch";
 				INFOPLIST_FILE = "Winmine/Winmine-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7A991251-5837-40BF-B6D9-578AD4EE4F19";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A991251-5837-40BF-B6D9-578AD4EE4F19";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -303,11 +379,15 @@
 		E203B698187479210066A5BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: wei tang (UM3W5PN3RL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: wei tang (UM3W5PN3RL)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Winmine/Winmine-Prefix.pch";
 				INFOPLIST_FILE = "Winmine/Winmine-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7A991251-5837-40BF-B6D9-578AD4EE4F19";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7A991251-5837-40BF-B6D9-578AD4EE4F19";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -331,6 +411,7 @@
 				E203B698187479210066A5BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
